@@ -39,9 +39,9 @@ module TestHelpers
   end 
 
   def authentication_header(user) 
+    token_string = "Bearer #{WebToken.encode(user)}"
     {
-      'X-User-Email': user.email,
-      'X-User-Token': user.authentication_token
+      'Authorization': token_string
     }
   end
 
