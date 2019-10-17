@@ -1,7 +1,6 @@
 json.data do 
-  json.user do 
-    json.call(
-      @user, :id, :email, :authentication_token
-    )
-  end 
+  json.call(
+    @user, :id, :email, :confirmation_token
+  )
+  json.jwt_token @jwt
 end 

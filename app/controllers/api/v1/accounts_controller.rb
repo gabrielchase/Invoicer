@@ -1,6 +1,8 @@
 class Api::V1::AccountsController < ApplicationController
   rescue_from ::ActiveRecord::RecordNotFound, with: :record_not_found
 
+  before_action :authenticate_user!
+
   def index 
     @accounts = current_user.accounts 
 
@@ -37,5 +39,4 @@ class Api::V1::AccountsController < ApplicationController
   def account_params 
     params.permit(:name, :address, :vat_rate, :tax_payer_id, :default_currency)
   end 
-
 end 
